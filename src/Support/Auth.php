@@ -4,9 +4,9 @@ namespace Helldar\CashierDriver\SberAuth\Support;
 
 use Carbon\Carbon;
 use DateTimeInterface;
-use Helldar\Cashier\Facade\Http;
 use Helldar\CashierDriver\SberAuth\DTO\Client;
 use Helldar\CashierDriver\SberAuth\Facades\Cache as Facade;
+use Helldar\CashierDriver\SberAuth\Facades\Http;
 use Helldar\Support\Facades\Helpers\Arr;
 
 class Auth
@@ -16,15 +16,15 @@ class Auth
         return Facade::get($client, function (Client $client) {
             return $this->request(
                 $client->url(),
-                $client->headers(),
-                $client->data()
+                $client->data(),
+                $client->headers()
             );
         });
     }
 
-    protected function request(string $url, array $headers, array $data): array
+    protected function request(string $url, array $data, array $headers): array
     {
-        $response = Http::post($url, $headers, $data);
+        $response = Http::post($url, $data, $headers);
 
         $token = $this->token($response);
         $ttl   = $this->ttl($response);
