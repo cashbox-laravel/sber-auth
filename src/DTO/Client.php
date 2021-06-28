@@ -2,12 +2,15 @@
 
 namespace Helldar\CashierDriver\SberAuth\DTO;
 
+use Helldar\Support\Concerns\Makeable;
 use Helldar\Support\Facades\Helpers\HttpBuilder as HttpBuilderHelper;
 use Helldar\Support\Facades\Helpers\Instance;
 use Helldar\Support\Helpers\HttpBuilder;
 
 class Client
 {
+    use Makeable;
+
     /** @var \Helldar\Support\Helpers\HttpBuilder */
     protected $http;
 
