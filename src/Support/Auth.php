@@ -44,7 +44,7 @@ class Auth
         $ttl = abs($expires_in - 10);
 
         return Carbon::now()->addSeconds(
-            $ttl > 0 ? $ttl : 30
+            $ttl > 0 ? $ttl : 60 * 24
         );
     }
 }

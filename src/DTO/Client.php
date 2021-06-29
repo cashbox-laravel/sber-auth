@@ -123,6 +123,6 @@ class Client
 
     protected function rqUID(): string
     {
-        return md5($this->unique_id);
+        return $this->unique_id;
     }
 }
