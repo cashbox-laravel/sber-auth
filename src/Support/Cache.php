@@ -2,6 +2,7 @@
 
 namespace Helldar\CashierDriver\SberAuth\Support;
 
+use Carbon\Carbon;
 use DateTimeInterface;
 use Helldar\CashierDriver\SberAuth\DTO\AccessToken;
 use Helldar\CashierDriver\SberAuth\DTO\Client;
@@ -37,7 +38,14 @@ class Cache
 
     protected function set(string $key, DateTimeInterface $ttl, string $token): void
     {
-        Repository::put($key, $ttl, $token);
+        try {
+            Repository::put($key, $ttl, $token);
+        }catch (\Throwable $e) {
+            dd(
+                $e->getMessage(),
+                $ttl
+            );
+        }
     }
 
     protected function request(Client $client, callable $request): AccessToken

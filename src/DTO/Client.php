@@ -23,8 +23,6 @@ class Client
 
     protected $payment_id;
 
-    protected $unique_id;
-
     protected $scope;
 
     protected $grant_type = 'client_credentials';
@@ -79,18 +77,6 @@ class Client
     public function getPaymentId()
     {
         return $this->payment_id;
-    }
-
-    public function uniqueId($unique_id): Client
-    {
-        $this->unique_id = $unique_id;
-
-        return $this;
-    }
-
-    public function getUniqueId(): string
-    {
-        return $this->unique_id;
     }
 
     public function scope($scope): Client
