@@ -6,6 +6,7 @@ use Helldar\Support\Concerns\Makeable;
 use Helldar\Support\Facades\Helpers\HttpBuilder as HttpBuilderHelper;
 use Helldar\Support\Facades\Helpers\Instance;
 use Helldar\Support\Helpers\HttpBuilder;
+use Ramsey\Uuid\Uuid;
 
 class Client
 {
@@ -37,7 +38,7 @@ class Client
         return $this;
     }
 
-    public function clientId($client_id): Client
+    public function clientId(string $client_id): Client
     {
         $this->client_id = $client_id;
 
@@ -49,18 +50,23 @@ class Client
         return $this->client_id;
     }
 
-    public function clientSecret($client_secret): Client
+    public function clientSecret(string $client_secret): Client
     {
         $this->client_secret = $client_secret;
 
         return $this;
     }
 
-    public function memberId($member_id): Client
+    public function memberId(string $member_id): Client
     {
         $this->member_id = $member_id;
 
         return $this;
+    }
+
+    public function getMemberId(): string
+    {
+        return $this->member_id;
     }
 
     public function paymentId($payment_id): Client
@@ -68,6 +74,11 @@ class Client
         $this->payment_id = $payment_id;
 
         return $this;
+    }
+
+    public function getPaymentId()
+    {
+        return $this->payment_id;
     }
 
     public function uniqueId($unique_id): Client
@@ -89,6 +100,11 @@ class Client
         return $this;
     }
 
+    public function getScope(): string
+    {
+        return $this->scope;
+    }
+
     public function url(): string
     {
         return $this->http->setPath($this->uri)->compile();
@@ -97,19 +113,19 @@ class Client
     public function headers(): array
     {
         return [
-            'grant_type' => $this->grant_type,
-            'scope'      => $this->scope,
+            'Accept'          => 'application/json',
+            'Content-Type'    => 'application/x-www-form-urlencoded',
+            'Authorization'   => 'Basic ' . $this->authorization(),
+            'X-IBM-Client-Id' => $this->getClientId(),
+            'RqUID'           => $this->rqUID(),
         ];
     }
 
     public function data(): array
     {
         return [
-            'Accept'          => 'application/json',
-            'Content-Type'    => 'application/x-www-form-urlencoded',
-            'Authorization'   => 'Basic ' . $this->authorization(),
-            'X-IBM-Client-Id' => $this->getClientId(),
-            'RqUID'           => $this->rqUID(),
+            'grant_type' => $this->grant_type,
+            'scope'      => $this->scope,
         ];
     }
 
@@ -123,6 +139,6 @@ class Client
 
     protected function rqUID(): string
     {
-        return $this->unique_id;
+        return md5(Uuid::uuid4());
     }
 }

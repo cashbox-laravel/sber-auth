@@ -3,7 +3,9 @@
 namespace Helldar\CashierDriver\SberAuth\Support;
 
 use DateTimeInterface;
+use Helldar\CashierDriver\SberAuth\DTO\AccessToken;
 use Helldar\CashierDriver\SberAuth\DTO\Client;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache as Repository;
 
 class Cache
@@ -13,11 +15,11 @@ class Cache
         $key = $this->key($client);
 
         if (! $this->has($key)) {
-            ['token' => $token, 'ttl' => $ttl] = $this->request($client, $request);
+            $response = $this->request($client, $request);
 
-            $this->set($key, $ttl, $token);
+            $this->set($key, $response->getExpiresIn(), $response->getAccessToken());
 
-            return $token;
+            return $response->getAccessToken();
         }
 
         return $this->from($key);
@@ -38,16 +40,21 @@ class Cache
         Repository::put($key, $ttl, $token);
     }
 
-    protected function request(Client $client, callable $request): array
+    protected function request(Client $client, callable $request): AccessToken
     {
         return $request($client);
     }
 
     protected function key(Client $client): string
     {
-        $client_id = $client->getClientId();
-        $unique_id = $client->getUniqueId();
+        $client_id  = $client->getClientId();
+        $member_id  = $client->getMemberId();
+        $payment_id = $client->getPaymentId();
+        $scope      = $client->getScope();
 
-        return implode('::', [md5(self::class), md5($client_id), md5($unique_id)]);
+        return Collection::make([self::class, $client_id, $member_id, $payment_id, $scope])
+            ->map(static function ($item) {
+                return md5($item);
+            })->implode('::');
     }
 }

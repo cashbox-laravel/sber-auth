@@ -28,7 +28,8 @@
         "andrey-helldar/support": "^3.24",
         "guzzlehttp/guzzle": "^6.5|^7.0",
         "illuminate/support": "^6.0|^7.0|^8.0",
-        "nesbot/carbon": "^2.0"
+        "nesbot/carbon": "^2.0",
+        "ramsey/uuid": "^3.7|^4.0"
     },
     "require-dev": {
         "andrey-helldar/cashier": "dev-main",
