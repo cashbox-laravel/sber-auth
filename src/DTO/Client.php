@@ -3,16 +3,14 @@
 namespace Helldar\CashierDriver\SberAuth\DTO;
 
 use Helldar\Support\Concerns\Makeable;
-use Helldar\Support\Facades\Helpers\HttpBuilder as HttpBuilderHelper;
-use Helldar\Support\Facades\Helpers\Instance;
-use Helldar\Support\Helpers\HttpBuilder;
+use Helldar\Support\Facades\Http\Builder;
 use Ramsey\Uuid\Uuid;
 
 class Client
 {
     use Makeable;
 
-    /** @var \Helldar\Support\Helpers\HttpBuilder */
+    /** @var \Helldar\Support\Helpers\Http\Builder */
     protected $http;
 
     protected $client_id;
@@ -31,7 +29,7 @@ class Client
 
     public function host($host): Client
     {
-        $this->http = Instance::of($host, HttpBuilder::class) ? $host : HttpBuilderHelper::parse($host);
+        $this->http = Builder::parse($host);
 
         return $this;
     }
