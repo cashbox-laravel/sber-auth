@@ -91,7 +91,7 @@ class Client
 
     public function url(): string
     {
-        return $this->http->setPath($this->uri)->compile();
+        return $this->http->withPath($this->uri);
     }
 
     public function headers(): array

@@ -2,7 +2,6 @@
 
 namespace Helldar\CashierDriver\SberAuth\Support;
 
-use Carbon\Carbon;
 use DateTimeInterface;
 use Helldar\CashierDriver\SberAuth\DTO\AccessToken;
 use Helldar\CashierDriver\SberAuth\DTO\Client;
@@ -40,7 +39,8 @@ class Cache
     {
         try {
             Repository::put($key, $ttl, $token);
-        }catch (\Throwable $e) {
+        }
+        catch (\Throwable $e) {
             dd(
                 $e->getMessage(),
                 $ttl
