@@ -5,11 +5,12 @@ namespace Helldar\CashierDriver\SberAuth\Support;
 use Helldar\Cashier\Facades\Helpers\Http as CashierHttp;
 use Helldar\CashierDriver\SberAuth\DTO\AccessToken;
 use Helldar\CashierDriver\SberAuth\Exceptions\AuthorizationHttpException;
+use Psr\Http\Message\UriInterface;
 use Throwable;
 
 class Http
 {
-    public function post(string $uri, array $body, array $headers): AccessToken
+    public function post(UriInterface $uri, array $body, array $headers): AccessToken
     {
         try {
             $response = CashierHttp::post($uri, $body, $headers);

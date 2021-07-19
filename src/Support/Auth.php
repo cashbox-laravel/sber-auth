@@ -6,6 +6,7 @@ use Helldar\CashierDriver\SberAuth\DTO\AccessToken;
 use Helldar\CashierDriver\SberAuth\DTO\Client;
 use Helldar\CashierDriver\SberAuth\Facades\Cache as Facade;
 use Helldar\CashierDriver\SberAuth\Facades\Http;
+use Psr\Http\Message\UriInterface;
 
 class Auth
 {
@@ -20,7 +21,7 @@ class Auth
         });
     }
 
-    protected function request(string $url, array $data, array $headers): AccessToken
+    protected function request(UriInterface $url, array $data, array $headers): AccessToken
     {
         return Http::post($url, $data, $headers);
     }

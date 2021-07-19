@@ -4,6 +4,7 @@ namespace Helldar\CashierDriver\SberAuth\DTO;
 
 use Helldar\Support\Concerns\Makeable;
 use Helldar\Support\Facades\Http\Builder;
+use Psr\Http\Message\UriInterface;
 use Ramsey\Uuid\Uuid;
 
 class Client
@@ -89,7 +90,7 @@ class Client
         return $this->scope;
     }
 
-    public function url(): string
+    public function url(): UriInterface
     {
         return $this->http->withPath($this->uri);
     }
