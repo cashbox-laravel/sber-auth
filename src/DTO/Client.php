@@ -2,10 +2,10 @@
 
 namespace Helldar\CashierDriver\SberAuth\DTO;
 
+use Helldar\Cashier\Facades\Unique;
 use Helldar\Support\Concerns\Makeable;
 use Helldar\Support\Facades\Http\Builder;
 use Psr\Http\Message\UriInterface;
-use Ramsey\Uuid\Uuid;
 
 class Client
 {
@@ -124,6 +124,6 @@ class Client
 
     protected function rqUID(): string
     {
-        return md5(Uuid::uuid4());
+        return Unique::uid();
     }
 }
