@@ -37,15 +37,7 @@ class Cache
 
     protected function set(string $key, DateTimeInterface $ttl, string $token): void
     {
-        try {
-            Repository::put($key, $ttl, $token);
-        }
-        catch (\Throwable $e) {
-            dd(
-                $e->getMessage(),
-                $ttl
-            );
-        }
+        Repository::put($key, $token, $ttl);
     }
 
     protected function request(Client $client, callable $request): AccessToken
