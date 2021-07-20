@@ -27,7 +27,45 @@ Or manually update `require` block of `composer.json` and run `composer update`.
 
 ## Using
 
-> See [parent](https://github.com/andrey-helldar/cashier#readme) project.
+```php
+namespace Helldar\CashierDriver\Sber\QrCode;
+
+use Helldar\CashierDriver\SberAuth\DTO\Client;
+use Helldar\Cashier\Services\Driver as BaseDriver;
+use Helldar\CashierDriver\SberAuth\Facades\Auth;
+
+class Driver extends BaseDriver
+{
+    protected function headers(string $scope): array
+    {
+        return [
+            'Authorization' => 'Bearer ' . $this->accessToken($scope),
+
+            'X-IBM-Client-Id' => $this->auth->getClientId(),
+
+            'x-Introspect-RqUID' => $this->resource->getUniqueId(),
+        ];
+    }
+
+    protected function accessToken(string $scope): string
+    {
+        $auth = $this->authDto($scope);
+
+        return Auth::accessToken($auth);
+    }
+
+    protected function authDto(string $scope): Client
+    {
+        return Client::make()
+            ->scope($scope)
+            ->host($this->host())
+            ->clientId($this->auth->getClientId())
+            ->clientSecret($this->auth->getClientSecret())
+            ->memberId($this->resource->getMemberId())
+            ->paymentId($this->resource->getPaymentId());
+    }
+}
+```
 
 ## For Enterprise
 
