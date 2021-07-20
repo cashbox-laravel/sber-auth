@@ -1,11 +1,11 @@
 <?php
 
-namespace Helldar\CashierDriver\SberAuth\Support;
+namespace Helldar\CashierDriver\Sber\Auth\Support;
 
-use Helldar\CashierDriver\SberAuth\DTO\AccessToken;
-use Helldar\CashierDriver\SberAuth\DTO\Client;
-use Helldar\CashierDriver\SberAuth\Facades\Cache as Facade;
-use Helldar\CashierDriver\SberAuth\Facades\Http;
+use Helldar\CashierDriver\Sber\Auth\DTO\AccessToken;
+use Helldar\CashierDriver\Sber\Auth\DTO\Client;
+use Helldar\CashierDriver\Sber\Auth\Facades\Cache as Facade;
+use Helldar\CashierDriver\Sber\Auth\Facades\Http;
 use Psr\Http\Message\UriInterface;
 
 class Auth

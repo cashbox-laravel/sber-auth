@@ -1,6 +1,6 @@
 <?php
 
-namespace Helldar\CashierDriver\SberAuth\DTO;
+namespace Helldar\CashierDriver\Sber\Auth\DTO;
 
 use Carbon\Carbon;
 use Helldar\Support\Concerns\Makeable;

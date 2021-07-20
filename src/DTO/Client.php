@@ -1,6 +1,6 @@
 <?php
 
-namespace Helldar\CashierDriver\SberAuth\DTO;
+namespace Helldar\CashierDriver\Sber\Auth\DTO;
 
 use Helldar\Cashier\Facades\Unique;
 use Helldar\Support\Concerns\Makeable;

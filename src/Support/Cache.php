@@ -1,10 +1,10 @@
 <?php
 
-namespace Helldar\CashierDriver\SberAuth\Support;
+namespace Helldar\CashierDriver\Sber\Auth\Support;
 
 use DateTimeInterface;
-use Helldar\CashierDriver\SberAuth\DTO\AccessToken;
-use Helldar\CashierDriver\SberAuth\DTO\Client;
+use Helldar\CashierDriver\Sber\Auth\DTO\AccessToken;
+use Helldar\CashierDriver\Sber\Auth\DTO\Client;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache as Repository;
 

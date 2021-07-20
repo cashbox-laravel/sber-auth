@@ -1,6 +1,6 @@
 <?php
 
-namespace Helldar\CashierDriver\SberAuth\Exceptions;
+namespace Helldar\CashierDriver\Sber\Auth\Exceptions;
 
 use RuntimeException;
 

@@ -1,9 +1,9 @@
 <?php
 
-namespace Helldar\CashierDriver\SberAuth\Facades;
+namespace Helldar\CashierDriver\Sber\Auth\Facades;
 
-use Helldar\CashierDriver\SberAuth\DTO\Client;
-use Helldar\CashierDriver\SberAuth\Support\Cache as Support;
+use Helldar\CashierDriver\Sber\Auth\DTO\Client;
+use Helldar\CashierDriver\Sber\Auth\Support\Cache as Support;
 use Illuminate\Support\Facades\Facade;
 
 /**

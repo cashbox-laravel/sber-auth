@@ -1,10 +1,10 @@
 <?php
 
-namespace Helldar\CashierDriver\SberAuth\Support;
+namespace Helldar\CashierDriver\Sber\Auth\Support;
 
 use Helldar\Cashier\Facades\Helpers\Http as CashierHttp;
-use Helldar\CashierDriver\SberAuth\DTO\AccessToken;
-use Helldar\CashierDriver\SberAuth\Exceptions\AuthorizationHttpException;
+use Helldar\CashierDriver\Sber\Auth\DTO\AccessToken;
+use Helldar\CashierDriver\Sber\Auth\Exceptions\AuthorizationHttpException;
 use Psr\Http\Message\UriInterface;
 use Throwable;
 
