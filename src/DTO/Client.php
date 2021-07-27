@@ -100,7 +100,7 @@ class Client
         return [
             'Accept'          => 'application/json',
             'Content-Type'    => 'application/x-www-form-urlencoded',
-            'Authorization'   => 'Basic ' . $this->authorization(),
+            'Authorization'   => 'Basic '.$this->authorization(),
             'X-IBM-Client-Id' => $this->getClientId(),
             'RqUID'           => $this->rqUID(),
         ];
@@ -119,7 +119,7 @@ class Client
         $client = $this->client_id;
         $secret = $this->client_secret;
 
-        return base64_encode($client . ':' . $secret);
+        return base64_encode($client.':'.$secret);
     }
 
     protected function rqUID(): string

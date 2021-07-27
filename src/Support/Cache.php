@@ -14,7 +14,7 @@ class Cache
     {
         $key = $this->key($client);
 
-        if (! $this->has($key)) {
+        if (!$this->has($key)) {
             $response = $this->request($client, $request);
 
             $this->set($key, $response->getExpiresIn(), $response->getAccessToken());
@@ -47,10 +47,10 @@ class Cache
 
     protected function key(Client $client): string
     {
-        $client_id  = $client->getClientId();
-        $member_id  = $client->getMemberId();
+        $client_id = $client->getClientId();
+        $member_id = $client->getMemberId();
         $payment_id = $client->getPaymentId();
-        $scope      = $client->getScope();
+        $scope = $client->getScope();
 
         return Collection::make([self::class, $client_id, $member_id, $payment_id, $scope])
             ->map(static function ($item) {

@@ -16,8 +16,7 @@ class Http
             $response = CashierHttp::post($uri, $body, $headers);
 
             return AccessToken::make($response);
-        }
-        catch (Throwable $e) {
+        } catch (Throwable $e) {
             $this->abort(__FUNCTION__, $uri, $e->getMessage());
         }
     }

@@ -10,7 +10,6 @@ class AuthorizationHttpException extends RuntimeException
 
     public function __construct(string $method, string $url, string $reason)
     {
-
         parent::__construct($this->message($method, $url, $reason));
     }
 
