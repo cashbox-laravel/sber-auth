@@ -25,6 +25,7 @@
     "require": {
         "php": "^7.2.5|^8.0",
         "ext-json": "*",
+        "andrey-helldar/contracts": "dev-main",
         "andrey-helldar/support": "^4.0",
         "illuminate/support": "^6.0|^7.0|^8.0",
         "nesbot/carbon": "^2.0",
