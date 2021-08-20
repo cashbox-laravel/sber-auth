@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Helldar\CashierDriver\Sber\Auth\Support;
 
 use DateTimeInterface;
-use Helldar\CashierDriver\Sber\Auth\DTO\AccessToken;
-use Helldar\CashierDriver\Sber\Auth\DTO\Client;
+use Helldar\CashierDriver\Sber\Auth\DataTransferObject\Client;
+use Helldar\CashierDriver\Sber\Auth\Resources\AccessToken;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache as Repository;
 
@@ -14,7 +16,7 @@ class Cache
     {
         $key = $this->key($client);
 
-        if (! $this->has($key)) {
+        if ($this->doesnt($key)) {
             $response = $this->request($client, $request);
 
             $this->set($key, $response->getExpiresIn(), $response->getAccessToken());
@@ -25,9 +27,9 @@ class Cache
         return $this->from($key);
     }
 
-    protected function has(string $key): bool
+    protected function doesnt(string $key): bool
     {
-        return Repository::has($key);
+        return ! Repository::has($key);
     }
 
     protected function from(string $key): string
@@ -53,8 +55,8 @@ class Cache
         $scope      = $client->getScope();
 
         return Collection::make([self::class, $client_id, $member_id, $payment_id, $scope])
-            ->map(static function ($item) {
-                return md5($item);
+            ->map(static function ($value) {
+                return md5($value);
             })->implode('::');
     }
 }
