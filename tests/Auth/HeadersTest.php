@@ -39,7 +39,7 @@ class HeadersTest extends TestCase
         $this->assertSame('application/json', Arr::get($auth->headers(), 'Accept'));
 
         $this->assertMatchesRegularExpression(
-            '/^Basic\s[\w]{8}-[\w]{4}-[\w]{4}-[\w]{4}-[\w]{12}$/',
+            '/^Bearer\s[\w]{8}-[\w]{4}-[\w]{4}-[\w]{4}-[\w]{12}$/',
             Arr::get($auth->headers(), 'Authorization')
         );
     }
