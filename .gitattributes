@@ -11,5 +11,7 @@ tests/ export-ignore
 .gitignore export-ignore
 .styleci.yml export-ignore
 
+.env.example export-ignore
+
 phpunit.php export-ignore
 phpunit.xml export-ignore
