@@ -24,8 +24,14 @@ jobs:
                     extensions: curl, mbstring, zip, pcntl, pdo, pdo_sqlite, iconv, bcmath
                     coverage: none
 
+            -   name: Store environment variables
+                run: |
+                    echo "CASHIER_SBER_CLIENT_ID=${{ secrets.CASHIER_SBER_CLIENT_ID }}" >> .env
+                    echo "CASHIER_SBER_CLIENT_SECRET=${{ secrets.CASHIER_SBER_CLIENT_SECRET }}" >> .env
+                    echo "CASHIER_SBER_QR_MEMBER_ID=${{ secrets.CASHIER_SBER_QR_MEMBER_ID }}" >> .env
+
             -   name: Install dependencies
-                run: composer require laravel/framework:^${{ matrix.laravel }}
+                run: composer require laravel/framework:^${{ matrix.laravel }} --prefer-stable --prefer-dist --no-progress --no-interaction
 
             -   name: Execute tests
                 run: sudo vendor/bin/phpunit
