@@ -19,10 +19,10 @@ declare(strict_types=1);
 
 namespace Helldar\CashierDriver\Sber\Auth;
 
-use Helldar\CashierDriver\Sber\Auth\Resources\AccessToken;
 use Helldar\CashierDriver\Sber\Auth\Support\Hash;
 use Helldar\Contracts\Cashier\Auth\Auth as AuthContract;
 use Helldar\Contracts\Cashier\Http\Request;
+use Helldar\Contracts\Cashier\Resources\AccessToken;
 use Helldar\Contracts\Cashier\Resources\Model;
 use Helldar\Support\Concerns\Makeable;
 
@@ -62,7 +62,6 @@ class Auth implements AuthContract
 
     protected function getAccessToken(): AccessToken
     {
-        // TODO: Add Scope
         return Hash::make()->get($this->model, $this->request->uri(), $this->scope);
     }
 }

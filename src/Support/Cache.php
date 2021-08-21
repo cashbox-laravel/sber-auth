@@ -5,14 +5,14 @@ declare(strict_types=1);
 namespace Helldar\CashierDriver\Sber\Auth\Support;
 
 use DateTimeInterface;
-use Helldar\CashierDriver\Sber\Auth\Objects\Client;
+use Helldar\CashierDriver\Sber\Auth\Objects\Query;
 use Helldar\CashierDriver\Sber\Auth\Resources\AccessToken;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache as Repository;
 
 class Cache
 {
-    public function get(Client $client, callable $request): string
+    public function get(Query $client, callable $request): AccessToken
     {
         $key = $this->key($client);
 
@@ -21,10 +21,10 @@ class Cache
 
             $this->set($key, $response->getExpiresIn(), $response->getAccessToken());
 
-            return $response->getAccessToken();
+            return $response;
         }
 
-        return $this->from($key);
+        return $this->from($key, $client);
     }
 
     protected function doesnt(string $key): bool
@@ -32,9 +32,13 @@ class Cache
         return ! Repository::has($key);
     }
 
-    protected function from(string $key): string
+    protected function from(string $key, Query $client): AccessToken
     {
-        return Repository::get($key);
+        $client_id = $client->getModel()->getClientId();
+
+        $access_token = Repository::get($key);
+
+        return AccessToken::make(compact('client_id', 'access_token'));
     }
 
     protected function set(string $key, DateTimeInterface $ttl, string $token): void
@@ -42,19 +46,24 @@ class Cache
         Repository::put($key, $token, $ttl);
     }
 
-    protected function request(Client $client, callable $request): AccessToken
+    protected function request(Query $client, callable $request): AccessToken
     {
         return $request($client);
     }
 
-    protected function key(Client $client): string
+    protected function key(Query $client): string
     {
-        $client_id  = $client->getClientId();
-        $member_id  = $client->getMemberId();
-        $payment_id = $client->getPaymentId();
-        $scope      = $client->getScope();
+        return $this->compact([
+            self::class,
+            $client->getModel()->getClientId(),
+            $client->getModel()->getPaymentId(),
+            $client->getScope(),
+        ]);
+    }
 
-        return Collection::make([self::class, $client_id, $member_id, $payment_id, $scope])
+    protected function compact(array $values): string
+    {
+        return Collection::make($values)
             ->map(static function ($value) {
                 return md5($value);
             })->implode('::');

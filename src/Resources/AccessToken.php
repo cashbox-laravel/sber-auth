@@ -31,7 +31,7 @@ class AccessToken extends DataTransferObject implements AccessTokenContract
     protected $expires_in;
 
     protected $map = [
-        Keys::TERMINAL   => 'client_id',
+        Keys::CLIENT_ID  => 'client_id',
         Keys::TOKEN      => 'access_token',
         Keys::EXPIRES_IN => 'expires_in',
     ];

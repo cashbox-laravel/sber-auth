@@ -21,7 +21,7 @@ namespace Helldar\CashierDriver\Sber\Auth\Constants;
 
 class Keys
 {
-    public const TERMINAL = 'X-IBM-Client-Id';
+    public const CLIENT_ID = 'X-IBM-Client-Id';
 
     public const TOKEN = 'Token';
 
