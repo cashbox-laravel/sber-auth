@@ -19,7 +19,6 @@ declare(strict_types=1);
 
 namespace Helldar\CashierDriver\Sber\Auth\Http;
 
-use Helldar\Cashier\Facades\Helpers\Unique;
 use Helldar\Cashier\Http\Request as BaseRequest;
 use Helldar\Contracts\Cashier\Resources\Model;
 
@@ -52,11 +51,15 @@ class Request extends BaseRequest
     public function getRawHeaders(): array
     {
         return [
+            'Accept' => 'application/json',
+
             'Content-Type' => 'application/x-www-form-urlencoded',
+
+            'X-IBM-Client-Id' => $this->model->getClientId(),
 
             'Authorization' => 'Basic ' . $this->authorization(),
 
-            'RqUID' => $this->rqUID(),
+            'RqUID' => $this->model->getUniqueId(true),
         ];
     }
 
@@ -71,10 +74,5 @@ class Request extends BaseRequest
     protected function authorization(): string
     {
         return base64_encode($this->model->getClientId() . ':' . $this->model->getClientSecret());
-    }
-
-    protected function rqUID(): string
-    {
-        return Unique::id();
     }
 }
