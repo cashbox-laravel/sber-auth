@@ -32,25 +32,36 @@ namespace Helldar\CashierDriver\Sber\QrCode\Requests;
 
 use Helldar\Cashier\Http\Request;
 use Helldar\CashierDriver\Sber\Auth\Auth;
+use Helldar\CashierDriver\Sber\QrCode\Constants\Body;
+use Helldar\CashierDriver\Sber\QrCode\Constants\Scopes;
 
-class Init extends Request
+class Create extends Request
 {
     protected $production_host = 'https://api.sberbank.ru';
     
     protected $dev_host = 'https://dev.api.sberbank.ru';
 
-    protected $path = '/ru/prod/creation';
+    protected $path = '/ru/prod/order/v1/creation';
     
     protected $auth = Auth::class;
+    
+    protected $auth_extra = [
+        Body::SCOPE => Scopes::CREATE,
+    ];
     
     public function getRawBody(): array
     {
         return [
-            'OrderId' => $this->model->getPaymentId(),
+            Body::REQUEST_ID   => $this->uniqueId(),
+            Body::REQUEST_TIME => $this->currentTime(),
 
-            'Amount' => $this->model->getSum(),
+            Body::MEMBER_ID   => $this->model->getMemberId(),
+            Body::TERMINAL_ID => $this->model->getTerminalId(),
 
-            'Currency' => $this->model->getCurrency(),
+            Body::ORDER_ID         => $this->model->getPaymentId(),
+            Body::ORDER_SUM        => $this->model->getSum(),
+            Body::ORDER_CURRENCY   => $this->model->getCurrency(),
+            Body::ORDER_CREATED_AT => $this->model->getCreatedAt(),
         ];
     }
 }
@@ -68,7 +79,7 @@ class Driver extends BaseDriver
 {
     public function start(): Response
     {
-        $request = Init::make($this->model);
+        $request = Create::make($this->model);
 
         return $this->request($request, Response::class);
     }
