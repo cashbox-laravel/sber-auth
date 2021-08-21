@@ -57,7 +57,7 @@ class Auth implements AuthContract
         return array_merge($this->request->getRawHeaders(), [
             'X-IBM-Client-Id' => $this->model->getClientId(),
 
-            'Authorization' => 'Basic ' . $token->getAccessToken(),
+            'Authorization' => 'Bearer ' . $token->getAccessToken(),
 
             'x-Introspect-RqUID' => $this->uniqueId(),
         ]);
