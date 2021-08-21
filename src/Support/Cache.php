@@ -1,38 +1,59 @@
 <?php
 
+/*
+ * This file is part of the "andrey-helldar/cashier-sber-auth" project.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * @author Andrey Helldar <helldar@ai-rus.com>
+ *
+ * @copyright 2021 Andrey Helldar
+ *
+ * @license MIT
+ *
+ * @see https://github.com/andrey-helldar/cashier-sber-auth
+ */
+
+declare(strict_types=1);
+
 namespace Helldar\CashierDriver\Sber\Auth\Support;
 
 use DateTimeInterface;
-use Helldar\CashierDriver\Sber\Auth\DTO\AccessToken;
-use Helldar\CashierDriver\Sber\Auth\DTO\Client;
+use Helldar\CashierDriver\Sber\Auth\Objects\Query;
+use Helldar\CashierDriver\Sber\Auth\Resources\AccessToken;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache as Repository;
 
 class Cache
 {
-    public function get(Client $client, callable $request): string
+    public function get(Query $client, callable $request): AccessToken
     {
         $key = $this->key($client);
 
-        if (! $this->has($key)) {
+        if ($this->doesnt($key)) {
             $response = $this->request($client, $request);
 
             $this->set($key, $response->getExpiresIn(), $response->getAccessToken());
 
-            return $response->getAccessToken();
+            return $response;
         }
 
-        return $this->from($key);
+        return $this->from($key, $client);
     }
 
-    protected function has(string $key): bool
+    protected function doesnt(string $key): bool
     {
-        return Repository::has($key);
+        return ! Repository::has($key);
     }
 
-    protected function from(string $key): string
+    protected function from(string $key, Query $client): AccessToken
     {
-        return Repository::get($key);
+        $client_id = $client->getModel()->getClientId();
+
+        $access_token = Repository::get($key);
+
+        return AccessToken::make(compact('client_id', 'access_token'));
     }
 
     protected function set(string $key, DateTimeInterface $ttl, string $token): void
@@ -40,21 +61,26 @@ class Cache
         Repository::put($key, $token, $ttl);
     }
 
-    protected function request(Client $client, callable $request): AccessToken
+    protected function request(Query $client, callable $request): AccessToken
     {
         return $request($client);
     }
 
-    protected function key(Client $client): string
+    protected function key(Query $client): string
     {
-        $client_id  = $client->getClientId();
-        $member_id  = $client->getMemberId();
-        $payment_id = $client->getPaymentId();
-        $scope      = $client->getScope();
+        return $this->compact([
+            self::class,
+            $client->getModel()->getClientId(),
+            $client->getModel()->getPaymentId(),
+            $client->getScope(),
+        ]);
+    }
 
-        return Collection::make([self::class, $client_id, $member_id, $payment_id, $scope])
-            ->map(static function ($item) {
-                return md5($item);
+    protected function compact(array $values): string
+    {
+        return Collection::make($values)
+            ->map(static function ($value) {
+                return md5($value);
             })->implode('::');
     }
 }

@@ -28,41 +28,49 @@ Or manually update `require` block of `composer.json` and run `composer update`.
 ## Using
 
 ```php
+namespace Helldar\CashierDriver\Sber\QrCode\Requests;
+
+use Helldar\Cashier\Http\Request;
+use Helldar\CashierDriver\Sber\Auth\Auth;
+
+class Init extends Request
+{
+    protected $production_host = 'https://api.sberbank.ru';
+    
+    protected $dev_host = 'https://dev.api.sberbank.ru';
+
+    protected $path = '/ru/prod/creation';
+    
+    protected $auth = Auth::class;
+    
+    public function getRawBody(): array
+    {
+        return [
+            'OrderId' => $this->model->getPaymentId(),
+
+            'Amount' => $this->model->getSum(),
+
+            'Currency' => $this->model->getCurrency(),
+        ];
+    }
+}
+```
+
+```php
 namespace Helldar\CashierDriver\Sber\QrCode;
 
-use Helldar\Cashier\Services\Driver as BaseDriver;
-use Helldar\CashierDriver\Sber\Auth\DTO\Client;
-use Helldar\CashierDriver\Sber\Auth\Facades\Auth;
+use Helldar\CashierDriver\Sber\Auth\Support\Auth;
+use Helldar\CashierDriver\Sber\QrCode\Driver as BaseDriver;
+use Helldar\CashierDriver\Sber\QrCode\Requests\Init;
+use Helldar\Contracts\Cashier\Resources\Response;
 
 class Driver extends BaseDriver
 {
-    protected function headers(string $scope): array
+    public function start(): Response
     {
-        return [
-            'Authorization' => 'Bearer ' . $this->accessToken($scope),
+        $request = Init::make($this->model);
 
-            'X-IBM-Client-Id' => $this->auth->getClientId(),
-
-            'x-Introspect-RqUID' => $this->resource->getUniqueId(),
-        ];
-    }
-
-    protected function accessToken(string $scope): string
-    {
-        $auth = $this->authDto($scope);
-
-        return Auth::accessToken($auth);
-    }
-
-    protected function authDto(string $scope): Client
-    {
-        return Client::make()
-            ->scope($scope)
-            ->host($this->host())
-            ->clientId($this->auth->getClientId())
-            ->clientSecret($this->auth->getClientSecret())
-            ->memberId($this->resource->getMemberId())
-            ->paymentId($this->resource->getPaymentId());
+        return $this->request($request, Response::class);
     }
 }
 ```

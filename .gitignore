@@ -3,6 +3,8 @@
 node_modules/
 vendor/
 
+.env
+
 *.bak
 *.cache
 *.clover

@@ -17,20 +17,25 @@
 
 declare(strict_types=1);
 
-namespace Helldar\CashierDriver\Sber\Auth\Facades;
+namespace Tests\Resources\AccessToken;
 
-use Helldar\CashierDriver\Sber\Auth\Objects\Query;
 use Helldar\CashierDriver\Sber\Auth\Resources\AccessToken;
-use Helldar\CashierDriver\Sber\Auth\Support\Cache as Support;
-use Illuminate\Support\Facades\Facade;
+use Helldar\Contracts\Cashier\Resources\AccessToken as AccessTokenContract;
+use Tests\TestCase;
 
-/**
- * @method static AccessToken get(Query $client, callable $request)
- */
-class Cache extends Facade
+class MakeTest extends TestCase
 {
-    protected static function getFacadeAccessor()
+    public function testMake()
     {
-        return Support::class;
+        $token = AccessToken::make();
+
+        $this->assertInstanceOf(AccessTokenContract::class, $token);
+    }
+
+    public function testConstruct()
+    {
+        $token = new AccessToken();
+
+        $this->assertInstanceOf(AccessTokenContract::class, $token);
     }
 }
