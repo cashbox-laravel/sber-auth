@@ -17,9 +17,10 @@
 
 declare(strict_types=1);
 
-namespace Helldar\CashierDriver\Sber\Auth\Support;
+namespace Helldar\CashierDriver\Sber\Auth;
 
 use Helldar\CashierDriver\Sber\Auth\Resources\AccessToken;
+use Helldar\CashierDriver\Sber\Auth\Support\Hash;
 use Helldar\Contracts\Cashier\Auth\Auth as AuthContract;
 use Helldar\Contracts\Cashier\Http\Request;
 use Helldar\Contracts\Cashier\Resources\Model;

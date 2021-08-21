@@ -30,7 +30,7 @@ Or manually update `require` block of `composer.json` and run `composer update`.
 ```php
 namespace Helldar\CashierDriver\Sber\QrCode\Requests;
 
-use Helldar\CashierDriver\Sber\Auth\Support\Auth;
+use Helldar\CashierDriver\Sber\Auth\Auth;
 
 class Init
 {

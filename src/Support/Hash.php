@@ -18,7 +18,7 @@
 namespace Helldar\CashierDriver\Sber\Auth\Support;
 
 use Helldar\Cashier\Facades\Helpers\Http;
-use Helldar\CashierDriver\Sber\Auth\DataTransferObject\Client;
+use Helldar\CashierDriver\Sber\Auth\Objects\Client;
 use Helldar\CashierDriver\Sber\Auth\Http\Request;
 use Helldar\CashierDriver\Sber\Auth\Resources\AccessToken;
 use Helldar\Contracts\Cashier\Http\Request as RequestContract;

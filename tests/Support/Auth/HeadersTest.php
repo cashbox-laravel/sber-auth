@@ -19,7 +19,7 @@ declare(strict_types=1);
 
 namespace Tests\Support\Auth;
 
-use Helldar\CashierDriver\Sber\Auth\Support\Auth;
+use Helldar\CashierDriver\Sber\Auth\Auth;
 use Tests\TestCase;
 
 class HeadersTest extends TestCase

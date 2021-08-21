@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Helldar\CashierDriver\Sber\Auth\Facades;
 
-use Helldar\CashierDriver\Sber\Auth\DataTransferObject\Client;
+use Helldar\CashierDriver\Sber\Auth\Objects\Client;
 use Helldar\CashierDriver\Sber\Auth\Support\Cache as Support;
 use Illuminate\Support\Facades\Facade;
 

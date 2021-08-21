@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Helldar\CashierDriver\Sber\Auth\DataTransferObject;
+namespace Helldar\CashierDriver\Sber\Auth\Objects;
 
 class Client
 {
