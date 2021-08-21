@@ -15,23 +15,34 @@
  * @see https://github.com/andrey-helldar/cashier-sber-auth
  */
 
-declare(strict_types=1);
+namespace Tests\Support\Cache;
 
-namespace Tests\Support\Hash;
-
-use Carbon\Carbon as BaseCarbon;
-use DateTimeInterface;
 use Helldar\CashierDriver\Sber\Auth\Support\Hash;
-use Helldar\Contracts\Cashier\Resources\AccessToken;
 use Helldar\Support\Facades\Http\Builder;
-use Illuminate\Support\Carbon;
 use Tests\TestCase;
 
 class GetTest extends TestCase
 {
     protected $uri_create = 'https://dev.api.sberbank.ru/ru/prod/order/v1/creation';
 
+    protected $pattern = '/^[\w]{8}-[\w]{4}-[\w]{4}-[\w]{4}-[\w]{12}$/';
+
     public function testBasic()
+    {
+        $first  = $this->getCache();
+        $second = $this->getCache();
+        $third  = $this->getCache();
+
+        $this->assertMatchesRegularExpression($this->pattern, $first);
+        $this->assertMatchesRegularExpression($this->pattern, $second);
+        $this->assertMatchesRegularExpression($this->pattern, $third);
+
+        $this->assertSame($first, $second);
+        $this->assertSame($first, $third);
+        $this->assertSame($second, $third);
+    }
+
+    protected function getCache(): string
     {
         $model = $this->model();
 
@@ -39,19 +50,6 @@ class GetTest extends TestCase
 
         $token = Hash::make()->get($model, $uri, self::SCOPE_CREATE);
 
-        $this->assertInstanceOf(AccessToken::class, $token);
-
-        $this->assertSame($this->clientId(), $token->getClientId());
-
-        $this->assertMatchesRegularExpression(
-            '/^[\w]{8}-[\w]{4}-[\w]{4}-[\w]{4}-[\w]{12}$/',
-            $token->getAccessToken()
-        );
-
-        $this->assertInstanceOf(Carbon::class, $token->getExpiresIn());
-        $this->assertInstanceOf(BaseCarbon::class, $token->getExpiresIn());
-        $this->assertInstanceOf(DateTimeInterface::class, $token->getExpiresIn());
-
-        $this->assertGreaterThan(Carbon::now(), $token->getExpiresIn());
+        return $token->getAccessToken();
     }
 }

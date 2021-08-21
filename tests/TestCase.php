@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the "andrey-helldar/cashier-tinkoff-auth" project.
+ * This file is part of the "andrey-helldar/cashier-sber-auth" project.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -12,28 +12,24 @@
  *
  * @license MIT
  *
- * @see https://github.com/andrey-helldar/cashier-tinkoff-auth
+ * @see https://github.com/andrey-helldar/cashier-sber-auth
  */
 
 namespace Tests;
 
 use Helldar\Cashier\Config\Driver;
 use Helldar\Cashier\Constants\Driver as DriverConstant;
-use Helldar\Contracts\Cashier\Config\Driver as DriverCotract;
+use Helldar\CashierDriver\Sber\Auth\Constants\Keys;
+use Helldar\Contracts\Cashier\Config\Driver as DriverContract;
 use Helldar\Contracts\Cashier\Http\Request;
 use Helldar\Contracts\Cashier\Resources\Model;
+use Illuminate\Foundation\Bootstrap\LoadEnvironmentVariables;
 use Orchestra\Testbench\TestCase as BaseTestCase;
 use Tests\Fixtures\ModelEloquent;
 use Tests\Fixtures\ModelResource;
 
 abstract class TestCase extends BaseTestCase
 {
-    public const TERMINAL_KEY = '1234567890';
-
-    public const TOKEN = '5szqkybmwvjcgcb7';
-
-    public const TOKEN_HASH = '16237a729273fbf1b5224906a40ea601664660b77aabcdaecab505b16ed0f545';
-
     public const PAYMENT_ID = '123456';
 
     public const SUM = 123.45;
@@ -48,21 +44,34 @@ abstract class TestCase extends BaseTestCase
 
     public const CREATED_AT_RESULT = '2021-07-29T18:51:03Z';
 
+    public const SCOPE_CREATE = 'https://api.sberbank.ru/order.create';
+
+    protected function getEnvironmentSetUp($app)
+    {
+        $app->useEnvironmentPath(__DIR__ . '/../');
+        $app->bootstrapWith([LoadEnvironmentVariables::class]);
+
+        /** @var \Illuminate\Config\Repository $config */
+        $config = $app['config'];
+
+        $config->set('cashier.drivers.sber_qr', [
+            DriverConstant::CLIENT_ID     => env('CASHIER_SBER_QR_CLIENT_ID'),
+            DriverConstant::CLIENT_SECRET => env('CASHIER_SBER_QR_CLIENT_SECRET'),
+
+            'member_id' => env('CASHIER_SBER_QR_MEMBER_ID'),
+        ]);
+    }
+
     protected function credentials(): array
     {
-        return $this->auth(self::TERMINAL_KEY, self::TOKEN);
+        return $this->auth($this->clientId(), $this->clientSecret());
     }
 
-    protected function credentialsHash(): array
-    {
-        return $this->auth(self::TERMINAL_KEY, self::TOKEN_HASH);
-    }
-
-    protected function auth(string $terminal, string $secret): array
+    protected function auth(string $client_id, string $client_secret): array
     {
         return [
-            'TerminalKey' => $terminal,
-            'Token'       => $secret,
+            Keys::CLIENT_ID => $client_id,
+            Keys::TOKEN     => $client_secret,
         ];
     }
 
@@ -75,17 +84,23 @@ abstract class TestCase extends BaseTestCase
         return new ModelResource($eloquent, $config);
     }
 
-    protected function config(): DriverCotract
+    protected function config(): DriverContract
     {
-        return Driver::make([
-            DriverConstant::CLIENT_ID => self::TERMINAL_KEY,
-
-            DriverConstant::CLIENT_SECRET => self::TOKEN,
-        ]);
+        return Driver::make(config('cashier.drivers.sber_qr'));
     }
 
     protected function request(): Request
     {
         return Fixtures\Request::make($this->model());
+    }
+
+    protected function clientId(): string
+    {
+        return config('cashier.drivers.sber_qr.client_id');
+    }
+
+    protected function clientSecret(): string
+    {
+        return config('cashier.drivers.sber_qr.client_secret');
     }
 }

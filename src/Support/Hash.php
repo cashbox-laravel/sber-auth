@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the "andrey-helldar/cashier-tinkoff-auth" project.
+ * This file is part of the "andrey-helldar/cashier-sber-auth" project.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -12,12 +12,13 @@
  *
  * @license MIT
  *
- * @see https://github.com/andrey-helldar/cashier-tinkoff-auth
+ * @see https://github.com/andrey-helldar/cashier-sber-auth
  */
 
 namespace Helldar\CashierDriver\Sber\Auth\Support;
 
 use Helldar\Cashier\Facades\Helpers\Http;
+use Helldar\CashierDriver\Sber\Auth\Constants\Keys;
 use Helldar\CashierDriver\Sber\Auth\Exceptions\Manager as ExceptionManager;
 use Helldar\CashierDriver\Sber\Auth\Facades\Cache as CacheRepository;
 use Helldar\CashierDriver\Sber\Auth\Http\Request;
@@ -42,7 +43,9 @@ class Hash
 
             $response = $this->post($request);
 
-            return $this->makeToken($response);
+            return $this->makeToken(array_merge($response, [
+                Keys::CLIENT_ID => $query->getModel()->getClientId(),
+            ]));
         });
     }
 

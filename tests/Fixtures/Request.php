@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the "andrey-helldar/cashier-tinkoff-auth" project.
+ * This file is part of the "andrey-helldar/cashier-sber-auth" project.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -12,7 +12,7 @@
  *
  * @license MIT
  *
- * @see https://github.com/andrey-helldar/cashier-tinkoff-auth
+ * @see https://github.com/andrey-helldar/cashier-sber-auth
  */
 
 declare(strict_types=1);
@@ -23,6 +23,12 @@ use Helldar\Cashier\Http\Request as BaseRequest;
 
 class Request extends BaseRequest
 {
+    /** @var string */
+    protected $production_host = 'https://api.sberbank.ru';
+
+    /** @var string */
+    protected $dev_host = 'https://dev.api.sberbank.ru';
+
     public function getRawHeaders(): array
     {
         return ['Accept' => 'application/json'];

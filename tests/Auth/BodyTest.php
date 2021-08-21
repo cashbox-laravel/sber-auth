@@ -17,17 +17,24 @@
 
 declare(strict_types=1);
 
-namespace Tests\Resources\AccessToken;
+namespace Tests\Auth;
 
-use Helldar\CashierDriver\Sber\Auth\Resources\AccessToken;
+use Helldar\CashierDriver\Sber\Auth\Auth;
 use Tests\TestCase;
 
-class GetClientIdTest extends TestCase
+class BodyTest extends TestCase
 {
     public function testBasic()
     {
-        $token = AccessToken::make($this->credentials());
+        $auth = Auth::make($this->model(), $this->request());
 
-        $this->assertSame($this->clientId(), $token->getClientId());
+        $this->assertIsArray($auth->body());
+
+        $this->assertSame([
+            'PaymentId' => self::PAYMENT_ID,
+            'Sum'       => self::SUM_RESULT,
+            'Currency'  => self::CURRENCY_RESULT,
+            'CreatedAt' => self::CREATED_AT_RESULT,
+        ], $auth->body());
     }
 }

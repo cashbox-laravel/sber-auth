@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the "andrey-helldar/cashier-tinkoff-auth" project.
+ * This file is part of the "andrey-helldar/cashier-sber-auth" project.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -12,7 +12,7 @@
  *
  * @license MIT
  *
- * @see https://github.com/andrey-helldar/cashier-tinkoff-auth
+ * @see https://github.com/andrey-helldar/cashier-sber-auth
  */
 
 declare(strict_types=1);
@@ -30,17 +30,6 @@ class GetExpiresInTest extends TestCase
     public function testBasic()
     {
         $token = AccessToken::make($this->credentials());
-
-        $this->assertInstanceOf(Carbon::class, $token->getExpiresIn());
-        $this->assertInstanceOf(BaseCarbon::class, $token->getExpiresIn());
-        $this->assertInstanceOf(DateTimeInterface::class, $token->getExpiresIn());
-
-        $this->assertGreaterThan(Carbon::now(), $token->getExpiresIn());
-    }
-
-    public function testHashed()
-    {
-        $token = AccessToken::make($this->credentialsHash());
 
         $this->assertInstanceOf(Carbon::class, $token->getExpiresIn());
         $this->assertInstanceOf(BaseCarbon::class, $token->getExpiresIn());

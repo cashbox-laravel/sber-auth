@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the "andrey-helldar/cashier-tinkoff-auth" project.
+ * This file is part of the "andrey-helldar/cashier-sber-auth" project.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -12,7 +12,7 @@
  *
  * @license MIT
  *
- * @see https://github.com/andrey-helldar/cashier-tinkoff-auth
+ * @see https://github.com/andrey-helldar/cashier-sber-auth
  */
 
 declare(strict_types=1);
@@ -26,10 +26,11 @@ use Tests\TestCase;
 /**
  * @property string $client_id
  * @property string $client_secret
+ * @property string $created_at
+ * @property string $currency
+ * @property string $member_id
  * @property string $payment_id
  * @property string $sum
- * @property string $currency
- * @property string $created_at
  */
 class ModelEloquent extends Model
 {
@@ -37,12 +38,17 @@ class ModelEloquent extends Model
 
     protected function getClientIdAttribute(): string
     {
-        return TestCase::TERMINAL_KEY;
+        return config('cashier.drivers.sber_qr.client_id');
     }
 
     protected function getClientSecretAttribute(): string
     {
-        return TestCase::TOKEN;
+        return config('cashier.drivers.sber_qr.client_secret');
+    }
+
+    protected function getMemberIdAttribute(): string
+    {
+        return config('cashier.drivers.sber_qr.member_id');
     }
 
     protected function getPaymentIdAttribute(): string
@@ -55,7 +61,7 @@ class ModelEloquent extends Model
         return TestCase::SUM;
     }
 
-    protected function getCurrencyAttribute(): string
+    protected function getCurrencyAttribute(): int
     {
         return TestCase::CURRENCY;
     }

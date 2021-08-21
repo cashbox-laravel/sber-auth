@@ -30,17 +30,18 @@ Or manually update `require` block of `composer.json` and run `composer update`.
 ```php
 namespace Helldar\CashierDriver\Sber\QrCode\Requests;
 
+use Helldar\Cashier\Http\Request;
 use Helldar\CashierDriver\Sber\Auth\Auth;
 
-class Init
+class Init extends Request
 {
-    protected $host = 'https://securepay.tinkoff.ru';
+    protected $production_host = 'https://api.sberbank.ru';
+    
+    protected $dev_host = 'https://dev.api.sberbank.ru';
 
-    protected $path = '/v2/Init';
+    protected $path = '/ru/prod/creation';
     
     protected $auth = Auth::class;
-
-    protected $hash = false;
     
     public function getRawBody(): array
     {
@@ -56,11 +57,11 @@ class Init
 ```
 
 ```php
-namespace Helldar\CashierDriver\Tinkoff\QrCode;
+namespace Helldar\CashierDriver\Sber\QrCode;
 
-use Helldar\CashierDriver\Tinkoff\Auth\Support\Auth;
-use Helldar\CashierDriver\Tinkoff\QrCode\Driver as BaseDriver;
-use Helldar\CashierDriver\Tinkoff\QrCode\Requests\Init;
+use Helldar\CashierDriver\Sber\Auth\Support\Auth;
+use Helldar\CashierDriver\Sber\QrCode\Driver as BaseDriver;
+use Helldar\CashierDriver\Sber\QrCode\Requests\Init;
 use Helldar\Contracts\Cashier\Resources\Response;
 
 class Driver extends BaseDriver
@@ -83,14 +84,14 @@ use to build your applications. Save time, reduce risk, and improve code health,
 use. [Learn more](https://tidelift.com/subscription/pkg/packagist-andrey-helldar-cashier?utm_source=packagist-andrey-helldar-cashier&utm_medium=referral&utm_campaign=enterprise&utm_term=repo)
 .
 
-[badge_downloads]:      https://img.shields.io/packagist/dt/andrey-helldar/cashier-tinkoff-auth.svg?style=flat-square
+[badge_downloads]:      https://img.shields.io/packagist/dt/andrey-helldar/cashier-sber-auth.svg?style=flat-square
 
-[badge_license]:        https://img.shields.io/packagist/l/andrey-helldar/cashier-tinkoff-auth.svg?style=flat-square
+[badge_license]:        https://img.shields.io/packagist/l/andrey-helldar/cashier-sber-auth.svg?style=flat-square
 
-[badge_stable]:         https://img.shields.io/github/v/release/andrey-helldar/cashier-tinkoff-auth?label=stable&style=flat-square
+[badge_stable]:         https://img.shields.io/github/v/release/andrey-helldar/cashier-sber-auth?label=stable&style=flat-square
 
 [badge_unstable]:       https://img.shields.io/badge/unstable-dev--main-orange?style=flat-square
 
 [link_license]:         LICENSE
 
-[link_packagist]:       https://packagist.org/packages/andrey-helldar/cashier-tinkoff-auth
+[link_packagist]:       https://packagist.org/packages/andrey-helldar/cashier-sber-auth
