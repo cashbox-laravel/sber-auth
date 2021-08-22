@@ -66,13 +66,13 @@ class Cache
         return $request($client);
     }
 
-    protected function key(Query $client): string
+    protected function key(Query $query): string
     {
         return $this->compact([
             self::class,
-            $client->getModel()->getClientId(),
-            $client->getModel()->getPaymentId(),
-            $client->getScope(),
+            $query->getModel()->getClientId(),
+            $query->getModel()->getPaymentId(),
+            $query->getScope(),
         ]);
     }
 
