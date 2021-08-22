@@ -46,6 +46,13 @@ abstract class TestCase extends BaseTestCase
 
     public const SCOPE_CREATE = 'https://api.sberbank.ru/order.create';
 
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->artisan('cache:clear')->run();
+    }
+
     protected function getEnvironmentSetUp($app)
     {
         $app->useEnvironmentPath(__DIR__ . '/../');

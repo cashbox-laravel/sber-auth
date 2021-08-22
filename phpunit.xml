@@ -29,6 +29,9 @@
          stopOnFailure="false"
          verbose="true"
 >
+    <php>
+        <env name="CACHE_DRIVER" value="file"/>
+    </php>
     <coverage processUncoveredFiles="true">
         <include>
             <directory suffix=".php">./src</directory>
