@@ -30,6 +30,7 @@
          verbose="true"
 >
     <php>
+        <env name="APP_ENV" value="testing"/>
         <env name="CACHE_DRIVER" value="file"/>
     </php>
     <coverage processUncoveredFiles="true">
