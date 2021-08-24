@@ -27,24 +27,38 @@ use Illuminate\Support\Facades\Cache as Repository;
 
 class Cache
 {
-    public function get(Query $client, callable $request): AccessToken
+    public function get(Query $query, callable $request): AccessToken
     {
-        $key = $this->key($client);
+        $key = $this->key($query);
 
         if ($this->doesnt($key)) {
-            $response = $this->request($client, $request);
+            $response = $this->request($query, $request);
 
             $this->set($key, $response->getExpiresIn(), $response->getAccessToken());
 
             return $response;
         }
 
-        return $this->from($key, $client);
+        return $this->from($key, $query);
+    }
+
+    public function forget(Query $query): void
+    {
+        $key = $this->key($query);
+
+        if ($this->exists($key)) {
+            Repository::forget($key);
+        }
+    }
+
+    protected function exists(string $key): bool
+    {
+        return Repository::has($key);
     }
 
     protected function doesnt(string $key): bool
     {
-        return ! Repository::has($key);
+        return ! $this->exists($key);
     }
 
     protected function from(string $key, Query $client): AccessToken

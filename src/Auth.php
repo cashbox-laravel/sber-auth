@@ -68,6 +68,11 @@ class Auth implements AuthContract
         return $this->request->getRawBody();
     }
 
+    public function refresh(): void
+    {
+        Hash::make()->forget($this->model, $this->scope);
+    }
+
     protected function getAccessToken(): AccessToken
     {
         return Hash::make()->get($this->model, $this->request->uri(), $this->scope);

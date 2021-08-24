@@ -49,6 +49,13 @@ class Hash
         });
     }
 
+    public function forget(Model $model, string $scope): void
+    {
+        $query = $this->query($model, $scope);
+
+        CacheRepository::forget($query);
+    }
+
     protected function post(RequestContract $request): array
     {
         return Http::post($request, $this->exceptions());

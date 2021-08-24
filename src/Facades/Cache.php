@@ -26,6 +26,7 @@ use Illuminate\Support\Facades\Facade;
 
 /**
  * @method static AccessToken get(Query $client, callable $request)
+ * @method static void forget(Query $client)
  */
 class Cache extends Facade
 {

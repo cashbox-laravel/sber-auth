@@ -25,13 +25,13 @@
     "require": {
         "php": "^7.3|^8.0",
         "ext-json": "*",
-        "andrey-helldar/contracts": "^1.9",
+        "andrey-helldar/contracts": "^1.14",
         "andrey-helldar/simple-data-transfer-object": "^1.0",
         "andrey-helldar/support": "^4.0",
         "illuminate/support": "^6.0|^7.0|^8.0"
     },
     "require-dev": {
-        "andrey-helldar/cashier": "^1.1",
+        "andrey-helldar/cashier": "^1.9",
         "orchestra/testbench": "^4.0|^5.0|^6.0",
         "phpunit/phpunit": "^9.0",
         "symfony/var-dumper": "^4.3.4|^5.0"
