@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Helldar\CashierDriver\Sber\Auth\Http;
 
+use Helldar\Cashier\Facades\Config\Main;
 use Helldar\Cashier\Http\Request as BaseRequest;
 use Helldar\Contracts\Cashier\Resources\Model;
 
@@ -69,6 +70,20 @@ class Request extends BaseRequest
             'grant_type' => $this->grant_type,
             'scope'      => $this->scope,
         ];
+    }
+
+    public function getHttpOptions(): array
+    {
+        if (Main::isProduction()) {
+            return [
+                'cert' => [
+                    $this->model->getCertificatePath(),
+                    $this->model->getCertificatePassword(),
+                ],
+            ];
+        }
+
+        return [];
     }
 
     protected function authorization(): string

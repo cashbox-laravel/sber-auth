@@ -25,6 +25,16 @@ use Tests\TestCase;
 
 class ModelResource extends Model
 {
+    public function getCertificatePath(): ?string
+    {
+        return null;
+    }
+
+    public function getCertificatePassword(): ?string
+    {
+        return null;
+    }
+
     protected function clientId(): string
     {
         return config('cashier.drivers.sber_qr.client_id');
