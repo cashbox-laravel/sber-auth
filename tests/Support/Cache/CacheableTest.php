@@ -17,20 +17,10 @@
 
 namespace Tests\Support\Cache;
 
-use Helldar\CashierDriver\Sber\Auth\Objects\Query;
-use Helldar\CashierDriver\Sber\Auth\Support\Cache;
-use Helldar\CashierDriver\Sber\Auth\Support\Hash;
-use Helldar\Contracts\Cashier\Resources\Model;
-use Helldar\Contracts\Http\Builder as BuilderContract;
-use Helldar\Support\Facades\Http\Builder;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache as CacheRepository;
-use Tests\TestCase;
 
-class CacheableTest extends TestCase
+class CacheableTest extends BaseTest
 {
-    protected $uri = 'https://dev.api.sberbank.ru/ru/prod/order/v1/creation';
-
     public function testSet()
     {
         $key = $this->getKey();
@@ -42,53 +32,5 @@ class CacheableTest extends TestCase
         $this->assertTrue(CacheRepository::has($key));
 
         $this->assertIsString(CacheRepository::get($key));
-    }
-
-    protected function uri(): BuilderContract
-    {
-        return Builder::parse($this->uri);
-    }
-
-    protected function getCache(): string
-    {
-        $model = $this->model();
-
-        $uri = Builder::parse($this->uri);
-
-        $token = Hash::make()->get($model, $uri, self::SCOPE_CREATE);
-
-        return $token->getAccessToken();
-    }
-
-    protected function query(Model $model, string $scope): Query
-    {
-        return Query::make(compact('model', 'scope'));
-    }
-
-    protected function getKey(): string
-    {
-        $model = $this->model();
-
-        $query = $this->query($model, self::SCOPE_CREATE);
-
-        return $this->key($query);
-    }
-
-    protected function key(Query $query): string
-    {
-        return $this->compact([
-            Cache::class,
-            $query->getModel()->getClientId(),
-            $query->getModel()->getPaymentId(),
-            $query->getScope(),
-        ]);
-    }
-
-    protected function compact(array $values): string
-    {
-        return Collection::make($values)
-            ->map(static function ($value) {
-                return md5($value);
-            })->implode('::');
     }
 }
