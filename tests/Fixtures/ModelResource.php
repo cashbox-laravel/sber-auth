@@ -60,7 +60,7 @@ class ModelResource extends Model
         return TestCase::SUM;
     }
 
-    protected function currency(): int
+    protected function currency(): string
     {
         return TestCase::CURRENCY;
     }

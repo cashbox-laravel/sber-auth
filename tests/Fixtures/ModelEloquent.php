@@ -61,7 +61,7 @@ class ModelEloquent extends Model
         return TestCase::SUM;
     }
 
-    protected function getCurrencyAttribute(): int
+    protected function getCurrencyAttribute(): string
     {
         return TestCase::CURRENCY;
     }

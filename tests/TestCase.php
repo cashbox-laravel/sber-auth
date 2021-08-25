@@ -36,9 +36,9 @@ abstract class TestCase extends BaseTestCase
 
     public const SUM_RESULT = 12345;
 
-    public const CURRENCY = 123;
+    public const CURRENCY = 'RUB';
 
-    public const CURRENCY_RESULT = '123';
+    public const CURRENCY_RESULT = '643';
 
     public const CREATED_AT = '2021-07-29 18:51:03';
 
