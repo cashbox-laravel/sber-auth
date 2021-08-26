@@ -7,6 +7,8 @@ Sber API Authorization Driver.
 [![Total Downloads][badge_downloads]][link_packagist]
 [![License][badge_license]][link_license]
 
+> **Note:** This driver doesn't need to be installed in the application. I's needed to implement "Sber" bank authorization for [Cashier](https://github.com/andrey-helldar/cashier) drivers.
+
 ## Installation
 
 To get the latest version of `Sber Auth Cashier Driver`, simply require the project using [Composer](https://getcomposer.org):
@@ -37,54 +39,20 @@ use Helldar\CashierDriver\Sber\QrCode\Constants\Scopes;
 
 class Create extends Request
 {
-    protected $production_host = 'https://api.sberbank.ru';
-    
-    protected $dev_host = 'https://dev.api.sberbank.ru';
-
     protected $path = '/ru/prod/order/v1/creation';
-    
+
+    // You need to provide a link to the authorization class:
     protected $auth = Auth::class;
-    
+
+    // You need to specify a scope to receive a token by auth:
     protected $auth_extra = [
         Body::SCOPE => Scopes::CREATE,
     ];
-    
-    public function getRawBody(): array
-    {
-        return [
-            Body::REQUEST_ID   => $this->uniqueId(),
-            Body::REQUEST_TIME => $this->currentTime(),
-
-            Body::MEMBER_ID   => $this->model->getMemberId(),
-            Body::TERMINAL_ID => $this->model->getTerminalId(),
-
-            Body::ORDER_ID         => $this->model->getPaymentId(),
-            Body::ORDER_SUM        => $this->model->getSum(),
-            Body::ORDER_CURRENCY   => $this->model->getCurrency(),
-            Body::ORDER_CREATED_AT => $this->model->getCreatedAt(),
-        ];
-    }
 }
 ```
 
-```php
-namespace Helldar\CashierDriver\Sber\QrCode;
+It's all. Enjoy 😎
 
-use Helldar\CashierDriver\Sber\Auth\Support\Auth;
-use Helldar\CashierDriver\Sber\QrCode\Driver as BaseDriver;
-use Helldar\CashierDriver\Sber\QrCode\Requests\Init;
-use Helldar\Contracts\Cashier\Resources\Response;
-
-class Driver extends BaseDriver
-{
-    public function start(): Response
-    {
-        $request = Create::make($this->model);
-
-        return $this->request($request, Response::class);
-    }
-}
-```
 
 ## For Enterprise
 
