@@ -7,7 +7,7 @@ Sber API Authorization Driver.
 [![Total Downloads][badge_downloads]][link_packagist]
 [![License][badge_license]][link_license]
 
-> **Note:** This driver doesn't need to be installed in the application. I's needed to implement "Sber" bank authorization for [Cashier](https://github.com/andrey-helldar/cashier) drivers.
+> **Note:** This driver doesn't need to be installed in the application. I's needed to implement [Sber](https://www.sberbank.ru/en) bank authorization for [Cashier](https://github.com/andrey-helldar/cashier) drivers.
 
 ## Installation
 
