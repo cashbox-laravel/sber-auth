@@ -19,6 +19,7 @@ declare(strict_types=1);
 
 namespace Tests\Fixtures;
 
+use Helldar\Cashier\Concerns\Casheable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 use Tests\TestCase;
@@ -34,6 +35,8 @@ use Tests\TestCase;
  */
 class ModelEloquent extends Model
 {
+    use Casheable;
+
     public $timestamps = false;
 
     protected function getClientIdAttribute(): string

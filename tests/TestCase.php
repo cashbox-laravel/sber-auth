@@ -61,6 +61,8 @@ abstract class TestCase extends BaseTestCase
         /** @var \Illuminate\Config\Repository $config */
         $config = $app['config'];
 
+        $config->set('cashier.logs.enabled', false);
+
         $config->set('cashier.drivers.sber_qr', [
             DriverConstant::CLIENT_ID     => env('CASHIER_SBER_QR_CLIENT_ID'),
             DriverConstant::CLIENT_SECRET => env('CASHIER_SBER_QR_CLIENT_SECRET'),
