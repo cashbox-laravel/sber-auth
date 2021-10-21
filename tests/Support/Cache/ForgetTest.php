@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Support\Cache;
 
-use Helldar\CashierDriver\Sber\Auth\Support\Hash;
+use CashierProvider\Sber\Auth\Support\Hash;
 use Illuminate\Support\Facades\Cache as CacheRepository;
 
 class ForgetTest extends BaseTest

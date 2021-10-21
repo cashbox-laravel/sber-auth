@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the "andrey-helldar/cashier-sber-auth" project.
+ * This file is part of the "cashier-provider/sber-auth" project.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -12,14 +12,14 @@
  *
  * @license MIT
  *
- * @see https://github.com/andrey-helldar/cashier-sber-auth
+ * @see https://github.com/cashier-provider/sber-auth
  */
 
 namespace Tests;
 
-use Helldar\Cashier\Config\Driver;
-use Helldar\Cashier\Constants\Driver as DriverConstant;
-use Helldar\CashierDriver\Sber\Auth\Constants\Keys;
+use CashierProvider\Core\Config\Driver;
+use CashierProvider\Core\Constants\Driver as DriverConstant;
+use CashierProvider\Sber\Auth\Constants\Keys;
 use Helldar\Contracts\Cashier\Config\Driver as DriverContract;
 use Helldar\Contracts\Cashier\Http\Request;
 use Helldar\Contracts\Cashier\Resources\Model;

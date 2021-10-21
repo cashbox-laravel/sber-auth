@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Tests\Support\Cache;
 
-use Helldar\CashierDriver\Sber\Auth\Objects\Query;
-use Helldar\CashierDriver\Sber\Auth\Support\Cache;
-use Helldar\CashierDriver\Sber\Auth\Support\Hash;
+use CashierProvider\Sber\Auth\Objects\Query;
+use CashierProvider\Sber\Auth\Support\Cache;
+use CashierProvider\Sber\Auth\Support\Hash;
 use Helldar\Contracts\Cashier\Resources\Model;
 use Helldar\Contracts\Http\Builder as BuilderContract;
 use Helldar\Support\Facades\Http\Builder;

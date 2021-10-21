@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the "andrey-helldar/cashier-sber-auth" project.
+ * This file is part of the "cashier-provider/sber-auth" project.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -12,12 +12,12 @@
  *
  * @license MIT
  *
- * @see https://github.com/andrey-helldar/cashier-sber-auth
+ * @see https://github.com/cashier-provider/sber-auth
  */
 
-namespace Helldar\CashierDriver\Sber\Auth\Resources;
+namespace CashierProvider\Sber\Auth\Resources;
 
-use Helldar\CashierDriver\Sber\Auth\Constants\Keys;
+use CashierProvider\Sber\Auth\Constants\Keys;
 use Helldar\Contracts\Cashier\Resources\AccessToken as AccessTokenContract;
 use Helldar\SimpleDataTransferObject\DataTransferObject;
 use Illuminate\Support\Carbon;
