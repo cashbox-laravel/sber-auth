@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the "andrey-helldar/cashier-sber-auth" project.
+ * This file is part of the "cashier-provider/sber-auth" project.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -12,14 +12,14 @@
  *
  * @license MIT
  *
- * @see https://github.com/andrey-helldar/cashier-sber-auth
+ * @see https://github.com/cashier-provider/sber-auth
  */
 
 declare(strict_types=1);
 
 namespace Tests\Fixtures;
 
-use Helldar\Cashier\Resources\Model;
+use CashierProvider\Core\Resources\Model;
 use Illuminate\Support\Carbon;
 use Tests\TestCase;
 
