@@ -1,6 +1,6 @@
 # Sber Auth Cashier Driver
 
-Sber API Authorization Driver.
+<img src="https://preview.dragon-code.pro/cashier-provider/sber-auth-driver.svg?brand=laravel" alt="Sber Auth Cashier Driver"/>
 
 [![Stable Version][badge_stable]][link_packagist]
 [![Unstable Version][badge_unstable]][link_packagist]
