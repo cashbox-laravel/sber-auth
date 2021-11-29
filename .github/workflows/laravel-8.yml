@@ -1,15 +1,15 @@
-name: phpunit
+name: "Laravel 8"
 on: [ push ]
 
 jobs:
     build:
-        runs-on: ubuntu-20.04
+        runs-on: ubuntu-latest
 
         strategy:
             fail-fast: true
             matrix:
-                php: [ "7.3", "7.4", "8.0" ]
-                laravel: [ "6.0", "7.0", "8.0" ]
+                php: [ "7.3", "7.4", "8.0", "8.1" ]
+                laravel: [ "8.0" ]
 
         name: PHP ${{ matrix.php }}, Laravel ${{ matrix.laravel }}
 
