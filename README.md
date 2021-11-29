@@ -22,7 +22,7 @@ Or manually update `require` block of `composer.json` and run `composer update`.
 ```json
 {
     "require": {
-        "cashier-provider/sber-auth": "^1.0"
+        "cashier-provider/sber-auth": "^2.0"
     }
 }
 ```
