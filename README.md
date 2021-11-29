@@ -1,6 +1,6 @@
-# Sber Auth Cashier Driver
+# Sber Cashier Authorization Driver
 
-Sber API Authorization Driver.
+<img src="https://preview.dragon-code.pro/cashier-provider/sber-auth-driver.svg?brand=laravel" alt="Sber Cashier Authorization Driver"/>
 
 [![Stable Version][badge_stable]][link_packagist]
 [![Unstable Version][badge_unstable]][link_packagist]
@@ -11,7 +11,7 @@ Sber API Authorization Driver.
 
 ## Installation
 
-To get the latest version of `Sber Auth Cashier Driver`, simply require the project using [Composer](https://getcomposer.org):
+To get the latest version of `Sber Cashier Authorization Driver`, simply require the project using [Composer](https://getcomposer.org):
 
 ```bash
 $ composer require cashier-provider/sber-auth
@@ -52,16 +52,6 @@ class Create extends Request
 ```
 
 It's all. Enjoy 😎
-
-
-## For Enterprise
-
-Available as part of the Tidelift Subscription.
-
-The maintainers of `cashier-provider/core` and thousands of other packages are working with Tidelift to deliver commercial support and maintenance for the open source packages you
-use to build your applications. Save time, reduce risk, and improve code health, while paying the maintainers of the exact packages you
-use. [Learn more](https://tidelift.com/subscription/pkg/packagist-andrey-helldar-cashier?utm_source=packagist-andrey-helldar-cashier&utm_medium=referral&utm_campaign=enterprise&utm_term=repo)
-.
 
 [badge_downloads]:      https://img.shields.io/packagist/dt/cashier-provider/sber-auth.svg?style=flat-square
 

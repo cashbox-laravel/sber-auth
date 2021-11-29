@@ -25,7 +25,7 @@
     "require": {
         "php": "^7.3|^8.0",
         "ext-json": "*",
-        "andrey-helldar/contracts": "^1.14",
+        "dragon-code/contracts": "^1.14",
         "andrey-helldar/simple-data-transfer-object": "^1.0",
         "andrey-helldar/support": "^4.0",
         "cashier-provider/core": "^1.29",
