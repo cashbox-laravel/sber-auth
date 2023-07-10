@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the "andrey-helldar/cashier-sber-auth" project.
+ * This file is part of the "cashier-provider/sber-auth" project.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -12,16 +12,16 @@
  *
  * @license MIT
  *
- * @see https://github.com/andrey-helldar/cashier-sber-auth
+ * @see https://github.com/cashier-provider/sber-auth
  */
 
 declare(strict_types=1);
 
-namespace SberAuth\src\Support;
+namespace CashierProvider\Sber\Auth\Support;
 
+use CashierProvider\Sber\Auth\Objects\Query;
+use CashierProvider\Sber\Auth\Resources\AccessToken;
 use DateTimeInterface;
-use SberAuth\src\Objects\Query;
-use SberAuth\src\Resources\AccessToken;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache as Repository;
 

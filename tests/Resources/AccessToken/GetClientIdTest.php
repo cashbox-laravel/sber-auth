@@ -17,24 +17,17 @@
 
 declare(strict_types=1);
 
-namespace CashierProvider\Sber\Auth\Objects;
+namespace Tests\Resources\AccessToken;
 
-use DragonCode\Contracts\Cashier\Resources\Model;
-use DragonCode\SimpleDataTransferObject\DataTransferObject;
+use CashierProvider\Sber\Auth\Resources\AccessToken;
+use Tests\TestCase;
 
-class Query extends DataTransferObject
+class GetClientIdTest extends TestCase
 {
-    protected $model;
-
-    protected $scope;
-
-    public function getModel(): Model
+    public function testBasic()
     {
-        return $this->model;
-    }
+        $token = AccessToken::make($this->credentials());
 
-    public function getScope(): string
-    {
-        return $this->scope;
+        $this->assertSame($this->clientId(), $token->getClientId());
     }
 }

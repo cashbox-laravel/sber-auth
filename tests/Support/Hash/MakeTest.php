@@ -17,24 +17,24 @@
 
 declare(strict_types=1);
 
-namespace CashierProvider\Sber\Auth\Objects;
+namespace Tests\Support\Hash;
 
-use DragonCode\Contracts\Cashier\Resources\Model;
-use DragonCode\SimpleDataTransferObject\DataTransferObject;
+use CashierProvider\Sber\Auth\Support\Hash;
+use Tests\TestCase;
 
-class Query extends DataTransferObject
+class MakeTest extends TestCase
 {
-    protected $model;
-
-    protected $scope;
-
-    public function getModel(): Model
+    public function testMake()
     {
-        return $this->model;
+        $hash = Hash::make();
+
+        $this->assertInstanceOf(Hash::class, $hash);
     }
 
-    public function getScope(): string
+    public function testConstruct()
     {
-        return $this->scope;
+        $hash = new Hash();
+
+        $this->assertInstanceOf(Hash::class, $hash);
     }
 }

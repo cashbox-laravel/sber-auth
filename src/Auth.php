@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the "andrey-helldar/cashier-sber-auth" project.
+ * This file is part of the "cashier-provider/sber-auth" project.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -12,31 +12,31 @@
  *
  * @license MIT
  *
- * @see https://github.com/andrey-helldar/cashier-sber-auth
+ * @see https://github.com/cashier-provider/sber-auth
  */
 
 declare(strict_types=1);
 
-namespace SberAuth\src;
+namespace CashierProvider\Sber\Auth;
 
-use Helldar\Cashier\Facades\Helpers\Unique;
-use SberAuth\src\Support\Hash;
-use Helldar\Contracts\Cashier\Auth\Auth as AuthContract;
-use Helldar\Contracts\Cashier\Http\Request;
-use Helldar\Contracts\Cashier\Resources\AccessToken;
-use Helldar\Contracts\Cashier\Resources\Model;
-use Helldar\Support\Concerns\Makeable;
-use Helldar\Support\Facades\Helpers\Arr;
+use CashierProvider\Core\Facades\Helpers\Unique;
+use CashierProvider\Sber\Auth\Support\Hash;
+use DragonCode\Contracts\Cashier\Auth\Auth as AuthContract;
+use DragonCode\Contracts\Cashier\Http\Request;
+use DragonCode\Contracts\Cashier\Resources\AccessToken;
+use DragonCode\Contracts\Cashier\Resources\Model;
+use DragonCode\Support\Concerns\Makeable;
+use DragonCode\Support\Facades\Helpers\Arr;
 
 /** @method static Auth make(Model $model, Request $request, bool $hash = true, array $extra = []) */
 class Auth implements AuthContract
 {
     use Makeable;
 
-    /** @var \Helldar\Contracts\Cashier\Resources\Model */
+    /** @var \DragonCode\Contracts\Cashier\Resources\Model */
     protected $model;
 
-    /** @var \Helldar\Contracts\Cashier\Http\Request */
+    /** @var \DragonCode\Contracts\Cashier\Http\Request */
     protected $request;
 
     /** @var string */

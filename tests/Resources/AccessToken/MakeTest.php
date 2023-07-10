@@ -17,21 +17,25 @@
 
 declare(strict_types=1);
 
-namespace CashierProvider\Sber\Auth\Facades;
+namespace Tests\Resources\AccessToken;
 
-use CashierProvider\Sber\Auth\Objects\Query;
 use CashierProvider\Sber\Auth\Resources\AccessToken;
-use CashierProvider\Sber\Auth\Support\Cache as Support;
-use Illuminate\Support\Facades\Facade;
+use DragonCode\Contracts\Cashier\Resources\AccessToken as AccessTokenContract;
+use Tests\TestCase;
 
-/**
- * @method static AccessToken get(Query $client, callable $request)
- * @method static void forget(Query $client)
- */
-class Cache extends Facade
+class MakeTest extends TestCase
 {
-    protected static function getFacadeAccessor()
+    public function testMake()
     {
-        return Support::class;
+        $token = AccessToken::make();
+
+        $this->assertInstanceOf(AccessTokenContract::class, $token);
+    }
+
+    public function testConstruct()
+    {
+        $token = new AccessToken();
+
+        $this->assertInstanceOf(AccessTokenContract::class, $token);
     }
 }
