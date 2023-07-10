@@ -1,57 +1,51 @@
-# Sber Cashier Authorization Driver
+# Sber Auth Driver
 
-<img src="https://preview.dragon-code.pro/cashier-provider/sber-auth-driver.svg?brand=laravel&mode=dark" alt="Sber Cashier Authorization Driver"/>
+![cashier-provider](https://preview.dragon-code.pro/cashier-provider/sber-auth.svg?brand=laravel)
 
 [![Stable Version][badge_stable]][link_packagist]
 [![Unstable Version][badge_unstable]][link_packagist]
 [![Total Downloads][badge_downloads]][link_packagist]
 [![License][badge_license]][link_license]
 
-> **Note:** This driver doesn't need to be installed in the application. I's needed to implement [Sber](https://www.sberbank.ru/en) bank authorization for [Cashier](https://github.com/cashier-provider/core) drivers.
+> Attention
+>
+> The project is in a state of global upgrade and some links may not be correct.
 
-## Installation
+## About Cashier Provider
 
-To get the latest version of `Sber Cashier Authorization Driver`, simply require the project using [Composer](https://getcomposer.org):
+`Cashier` provides an expressive and user-friendly interface for managing billing and payment verification services.
+We believe that development should be an enjoyable, creative experience to be truly rewarding.
+`Cashier Provider` tries to ease development by simplifying the tasks of adding payment systems to a web application.
 
-```bash
-$ composer require cashier-provider/sber-auth
-```
+The project contains some ready-made solutions of payment systems, but you can offer your own.
 
-Or manually update `require` block of `composer.json` and run `composer update`.
+## About Driver
 
-```json
-{
-    "require": {
-        "cashier-provider/sber-auth": "^2.0"
-    }
-}
-```
+Authorization driver for [Sberbank](https://www.sberbank.ru) payment systems.
+Realizes the functionality of signing outgoing requests to the bank.
 
-## Using
+## Documentation
 
-```php
-namespace CashierProvider\Sber\QrCode\Requests;
+You will find full documentation on the dedicated [documentation](https://github.com/cashier-provider/docs) site.
 
-use CashierProvider\Core\Http\Request;
-use CashierProvider\Sber\Auth\Auth;
-use CashierProvider\Sber\QrCode\Constants\Body;
-use CashierProvider\Sber\QrCode\Constants\Scopes;
+## Contributing
 
-class Create extends Request
-{
-    protected $path = '/ru/prod/order/v3/creation';
+Thank you for considering contributing to the `Cashier Provider`!
+The contribution guide can be found in the [Cashier Provider documentation](https://github.com/cashier-provider/docs).
 
-    // You need to provide a link to the authorization class:
-    protected $auth = Auth::class;
+## Code of Conduct
 
-    // You need to specify a scope to receive a token by auth:
-    protected $auth_extra = [
-        Body::SCOPE => Scopes::CREATE,
-    ];
-}
-```
+In order to ensure that the `Cashier Provider` community is welcoming to all, please review and abide by
+the [Code of Conduct](https://github.com/cashier-provider/docs).
 
-It's all. Enjoy 😎
+## Security Vulnerabilities
+
+Please review [our security policy](https://github.com/cashier-provider/docs) on how to report security vulnerabilities.
+
+## License
+
+The Cashier Provider is open-source software that works in conjunction with
+the [Laravel framework](https://laravel.com/), distributed under the MIT license.
 
 [badge_downloads]:      https://img.shields.io/packagist/dt/cashier-provider/sber-auth.svg?style=flat-square
 
