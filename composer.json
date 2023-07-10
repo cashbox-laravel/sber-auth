@@ -50,16 +50,11 @@
         "dragon-code/support": "^5.0",
         "illuminate/support": "^6.0 || ^7.0 || ^8.0"
     },
-    "require-dev": {
-        "orchestra/testbench": "^4.0 || ^5.0 || ^6.0",
-        "phpunit/phpunit": "^9.0",
-        "symfony/var-dumper": "^4.3.4 || ^5.0"
-    },
     "minimum-stability": "stable",
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
-            "CashierProvider\\Sber\\Auth\\": "src"
+            "CashierProvider\\Sber\\Auth\\": "src/"
         }
     },
     "config": {
