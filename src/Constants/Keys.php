@@ -21,9 +21,7 @@ namespace CashierProvider\Sber\Auth\Constants;
 
 class Keys
 {
-    public const CLIENT_ID = 'client_id';
-
-    public const TOKEN = 'access_token';
-
+    public const CLIENT_ID  = 'client_id';
+    public const TOKEN      = 'access_token';
     public const EXPIRES_IN = 'expires_in';
 }

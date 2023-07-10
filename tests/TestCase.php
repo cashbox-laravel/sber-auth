@@ -30,21 +30,14 @@ use Tests\Fixtures\ModelResource;
 
 abstract class TestCase extends BaseTestCase
 {
-    public const PAYMENT_ID = '123456';
-
-    public const SUM = 123.45;
-
-    public const SUM_RESULT = 12345;
-
-    public const CURRENCY = 'RUB';
-
-    public const CURRENCY_RESULT = '643';
-
-    public const CREATED_AT = '2021-07-29 18:51:03';
-
+    public const PAYMENT_ID        = '123456';
+    public const SUM               = 123.45;
+    public const SUM_RESULT        = 12345;
+    public const CURRENCY          = 'RUB';
+    public const CURRENCY_RESULT   = '643';
+    public const CREATED_AT        = '2021-07-29 18:51:03';
     public const CREATED_AT_RESULT = '2021-07-29T18:51:03Z';
-
-    public const SCOPE_CREATE = 'https://api.sberbank.ru/order.create';
+    public const SCOPE_CREATE      = 'https://api.sberbank.ru/order.create';
 
     protected function setUp(): void
     {
