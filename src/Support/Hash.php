@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the "cashier-provider/sber-auth" project.
+ * This file is part of the "andrey-helldar/cashier-sber-auth" project.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -12,23 +12,23 @@
  *
  * @license MIT
  *
- * @see https://github.com/cashier-provider/sber-auth
+ * @see https://github.com/andrey-helldar/cashier-sber-auth
  */
 
-namespace CashierProvider\Sber\Auth\Support;
+namespace SberAuth\src\Support;
 
-use CashierProvider\Core\Facades\Helpers\Http;
-use CashierProvider\Sber\Auth\Constants\Keys;
-use CashierProvider\Sber\Auth\Exceptions\Manager as ExceptionManager;
-use CashierProvider\Sber\Auth\Facades\Cache as CacheRepository;
-use CashierProvider\Sber\Auth\Http\Request;
-use CashierProvider\Sber\Auth\Objects\Query;
-use CashierProvider\Sber\Auth\Resources\AccessToken;
-use DragonCode\Contracts\Cashier\Http\Request as RequestContract;
-use DragonCode\Contracts\Cashier\Resources\Model;
-use DragonCode\Contracts\Exceptions\Manager;
-use DragonCode\Contracts\Http\Builder;
-use DragonCode\Support\Concerns\Makeable;
+use Helldar\Cashier\Facades\Helpers\Http;
+use SberAuth\src\Constants\Keys;
+use SberAuth\src\Exceptions\Manager as ExceptionManager;
+use SberAuth\src\Facades\Cache as CacheRepository;
+use SberAuth\src\Http\Request;
+use SberAuth\src\Objects\Query;
+use SberAuth\src\Resources\AccessToken;
+use Helldar\Contracts\Cashier\Http\Request as RequestContract;
+use Helldar\Contracts\Cashier\Resources\Model;
+use Helldar\Contracts\Exceptions\Manager;
+use Helldar\Contracts\Http\Builder;
+use Helldar\Support\Concerns\Makeable;
 
 class Hash
 {

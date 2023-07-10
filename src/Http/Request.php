@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the "cashier-provider/sber-auth" project.
+ * This file is part of the "andrey-helldar/cashier-sber-auth" project.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -12,16 +12,16 @@
  *
  * @license MIT
  *
- * @see https://github.com/cashier-provider/sber-auth
+ * @see https://github.com/andrey-helldar/cashier-sber-auth
  */
 
 declare(strict_types=1);
 
-namespace CashierProvider\Sber\Auth\Http;
+namespace SberAuth\src\Http;
 
-use CashierProvider\Core\Facades\Config\Main;
-use CashierProvider\Core\Http\Request as BaseRequest;
-use DragonCode\Contracts\Cashier\Resources\Model;
+use Helldar\Cashier\Facades\Config\Main;
+use Helldar\Cashier\Http\Request as BaseRequest;
+use Helldar\Contracts\Cashier\Resources\Model;
 
 /**
  * @method static Request make(Model $model)

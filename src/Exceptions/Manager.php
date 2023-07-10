@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the "cashier-provider/sber-auth" project.
+ * This file is part of the "andrey-helldar/cashier-sber-auth" project.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -12,13 +12,13 @@
  *
  * @license MIT
  *
- * @see https://github.com/cashier-provider/sber-auth
+ * @see https://github.com/andrey-helldar/cashier-sber-auth
  */
 
-namespace CashierProvider\Sber\Auth\Exceptions;
+namespace SberAuth\src\Exceptions;
 
-use CashierProvider\Core\Exceptions\Http\UnauthorizedException;
-use CashierProvider\Core\Exceptions\Manager as ExceptionManager;
+use Helldar\Cashier\Exceptions\Http\UnauthorizedException;
+use Helldar\Cashier\Exceptions\Manager as ExceptionManager;
 
 class Manager extends ExceptionManager
 {
