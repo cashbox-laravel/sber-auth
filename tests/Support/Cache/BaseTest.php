@@ -17,9 +17,9 @@ declare(strict_types=1);
 
 namespace Tests\Support\Cache;
 
-use CashierProvider\Sber\Auth\Objects\Query;
-use CashierProvider\Sber\Auth\Support\Cache;
-use CashierProvider\Sber\Auth\Support\Hash;
+use Cashbox\Sber\Auth\Objects\Query;
+use Cashbox\Sber\Auth\Support\Cache;
+use Cashbox\Sber\Auth\Support\Hash;
 use DragonCode\Contracts\Cashier\Resources\Model;
 use DragonCode\Contracts\Http\Builder as BuilderContract;
 use DragonCode\Support\Facades\Http\Builder;

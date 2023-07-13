@@ -15,10 +15,10 @@
 
 declare(strict_types=1);
 
-namespace CashierProvider\Sber\Auth\Support;
+namespace Cashbox\Sber\Auth\Support;
 
-use CashierProvider\Sber\Auth\Objects\Query;
-use CashierProvider\Sber\Auth\Resources\AccessToken;
+use Cashbox\Sber\Auth\Objects\Query;
+use Cashbox\Sber\Auth\Resources\AccessToken;
 use DateTimeInterface;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache as Repository;

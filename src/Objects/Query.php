@@ -15,7 +15,7 @@
 
 declare(strict_types=1);
 
-namespace CashierProvider\Sber\Auth\Objects;
+namespace Cashbox\Sber\Auth\Objects;
 
 use DragonCode\Contracts\Cashier\Resources\Model;
 use DragonCode\SimpleDataTransferObject\DataTransferObject;

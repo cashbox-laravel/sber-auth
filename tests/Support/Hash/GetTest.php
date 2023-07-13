@@ -18,7 +18,7 @@ declare(strict_types=1);
 namespace Tests\Support\Hash;
 
 use Carbon\Carbon as BaseCarbon;
-use CashierProvider\Sber\Auth\Support\Hash;
+use Cashbox\Sber\Auth\Support\Hash;
 use DateTimeInterface;
 use DragonCode\Contracts\Cashier\Resources\AccessToken;
 use DragonCode\Support\Facades\Http\Builder;

@@ -17,7 +17,7 @@ declare(strict_types=1);
 
 namespace Tests\Support\Cache;
 
-use CashierProvider\Sber\Auth\Support\Hash;
+use Cashbox\Sber\Auth\Support\Hash;
 use Illuminate\Support\Facades\Cache as CacheRepository;
 
 class ForgetTest extends BaseTest

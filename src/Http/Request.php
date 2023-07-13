@@ -15,10 +15,10 @@
 
 declare(strict_types=1);
 
-namespace CashierProvider\Sber\Auth\Http;
+namespace Cashbox\Sber\Auth\Http;
 
-use CashierProvider\Core\Facades\Config\Main;
-use CashierProvider\Core\Http\Request as BaseRequest;
+use Cashbox\Core\Facades\Config\Main;
+use Cashbox\Core\Http\Request as BaseRequest;
 use DragonCode\Contracts\Cashier\Resources\Model;
 
 /**

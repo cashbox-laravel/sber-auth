@@ -15,7 +15,7 @@
 
 namespace Tests\Support\Cache;
 
-use CashierProvider\Sber\Auth\Support\Hash;
+use Cashbox\Sber\Auth\Support\Hash;
 use DragonCode\Support\Facades\Http\Builder;
 use Tests\TestCase;
 

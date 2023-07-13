@@ -13,15 +13,15 @@
  * @see https://github.com/cashbox-laravel/foundation
  */
 
-namespace CashierProvider\Sber\Auth\Support;
+namespace Cashbox\Sber\Auth\Support;
 
-use CashierProvider\Core\Facades\Helpers\Http;
-use CashierProvider\Sber\Auth\Constants\Keys;
-use CashierProvider\Sber\Auth\Exceptions\Manager as ExceptionManager;
-use CashierProvider\Sber\Auth\Facades\Cache as CacheRepository;
-use CashierProvider\Sber\Auth\Http\Request;
-use CashierProvider\Sber\Auth\Objects\Query;
-use CashierProvider\Sber\Auth\Resources\AccessToken;
+use Cashbox\Core\Facades\Helpers\Http;
+use Cashbox\Sber\Auth\Constants\Keys;
+use Cashbox\Sber\Auth\Exceptions\Manager as ExceptionManager;
+use Cashbox\Sber\Auth\Facades\Cache as CacheRepository;
+use Cashbox\Sber\Auth\Http\Request;
+use Cashbox\Sber\Auth\Objects\Query;
+use Cashbox\Sber\Auth\Resources\AccessToken;
 use DragonCode\Contracts\Cashier\Http\Request as RequestContract;
 use DragonCode\Contracts\Cashier\Resources\Model;
 use DragonCode\Contracts\Exceptions\Manager;

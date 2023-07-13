@@ -13,9 +13,9 @@
  * @see https://github.com/cashbox-laravel/foundation
  */
 
-namespace CashierProvider\Sber\Auth\Resources;
+namespace Cashbox\Sber\Auth\Resources;
 
-use CashierProvider\Sber\Auth\Constants\Keys;
+use Cashbox\Sber\Auth\Constants\Keys;
 use DragonCode\Contracts\Cashier\Resources\AccessToken as AccessTokenContract;
 use DragonCode\SimpleDataTransferObject\DataTransferObject;
 use Illuminate\Support\Carbon;

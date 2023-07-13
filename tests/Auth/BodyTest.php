@@ -17,7 +17,7 @@ declare(strict_types=1);
 
 namespace Tests\Auth;
 
-use CashierProvider\Sber\Auth\Auth;
+use Cashbox\Sber\Auth\Auth;
 use Tests\TestCase;
 
 class BodyTest extends TestCase

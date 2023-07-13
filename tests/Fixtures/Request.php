@@ -17,7 +17,7 @@ declare(strict_types=1);
 
 namespace Tests\Fixtures;
 
-use CashierProvider\Core\Http\Request as BaseRequest;
+use Cashbox\Core\Http\Request as BaseRequest;
 
 class Request extends BaseRequest
 {

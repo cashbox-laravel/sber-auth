@@ -15,11 +15,11 @@
 
 declare(strict_types=1);
 
-namespace CashierProvider\Sber\Auth\Facades;
+namespace Cashbox\Sber\Auth\Facades;
 
-use CashierProvider\Sber\Auth\Objects\Query;
-use CashierProvider\Sber\Auth\Resources\AccessToken;
-use CashierProvider\Sber\Auth\Support\Cache as Support;
+use Cashbox\Sber\Auth\Objects\Query;
+use Cashbox\Sber\Auth\Resources\AccessToken;
+use Cashbox\Sber\Auth\Support\Cache as Support;
 use Illuminate\Support\Facades\Facade;
 
 /**

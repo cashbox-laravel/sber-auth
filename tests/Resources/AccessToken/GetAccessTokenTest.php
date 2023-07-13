@@ -17,7 +17,7 @@ declare(strict_types=1);
 
 namespace Tests\Resources\AccessToken;
 
-use CashierProvider\Sber\Auth\Resources\AccessToken;
+use Cashbox\Sber\Auth\Resources\AccessToken;
 use Tests\TestCase;
 
 class GetAccessTokenTest extends TestCase

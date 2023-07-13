@@ -13,10 +13,10 @@
  * @see https://github.com/cashbox-laravel/foundation
  */
 
-namespace CashierProvider\Sber\Auth\Exceptions;
+namespace Cashbox\Sber\Auth\Exceptions;
 
-use CashierProvider\Core\Exceptions\Http\UnauthorizedException;
-use CashierProvider\Core\Exceptions\Manager as ExceptionManager;
+use Cashbox\Core\Exceptions\Http\UnauthorizedException;
+use Cashbox\Core\Exceptions\Manager as ExceptionManager;
 
 class Manager extends ExceptionManager
 {

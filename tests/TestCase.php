@@ -15,9 +15,9 @@
 
 namespace Tests;
 
-use CashierProvider\Core\Config\Driver;
-use CashierProvider\Core\Constants\Driver as DriverConstant;
-use CashierProvider\Sber\Auth\Constants\Keys;
+use Cashbox\Core\Config\Driver;
+use Cashbox\Core\Constants\Driver as DriverConstant;
+use Cashbox\Sber\Auth\Constants\Keys;
 use DragonCode\Contracts\Cashier\Config\Driver as DriverContract;
 use DragonCode\Contracts\Cashier\Http\Request;
 use DragonCode\Contracts\Cashier\Resources\Model;

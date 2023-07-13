@@ -15,10 +15,10 @@
 
 declare(strict_types=1);
 
-namespace CashierProvider\Sber\Auth;
+namespace Cashbox\Sber\Auth;
 
-use CashierProvider\Core\Facades\Helpers\Unique;
-use CashierProvider\Sber\Auth\Support\Hash;
+use Cashbox\Core\Facades\Helpers\Unique;
+use Cashbox\Sber\Auth\Support\Hash;
 use DragonCode\Contracts\Cashier\Auth\Auth as AuthContract;
 use DragonCode\Contracts\Cashier\Http\Request;
 use DragonCode\Contracts\Cashier\Resources\AccessToken;

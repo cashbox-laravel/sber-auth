@@ -15,7 +15,7 @@
 
 declare(strict_types=1);
 
-namespace CashierProvider\Sber\Auth\Constants;
+namespace Cashbox\Sber\Auth\Constants;
 
 class Keys
 {
