@@ -1,6 +1,6 @@
 {
     "name": "cashbox/sber-auth",
-    "description": "Sber API Authorization Driver",
+    "description": "The Auth driver generates a signature for requests in the Sber API.",
     "license": "MIT",
     "type": "library",
     "keywords": [
@@ -71,6 +71,7 @@
         "branch-alias": {
             "dev-main": "4.x-dev"
         },
+        "title": "Sber Auth Driver",
         "thanks": [
             {
                 "name": "dragon-code/laravel-support",
