@@ -46,6 +46,7 @@
         "ext-json": "*",
         "cashbox/core": "^3.0",
         "dragon-code/contracts": "^2.20",
+        "dragon-code/laravel-cache": "^3.9",
         "dragon-code/simple-dto": "^2.7.1",
         "dragon-code/support": "^6.11.2",
         "illuminate/support": "^10.15"
