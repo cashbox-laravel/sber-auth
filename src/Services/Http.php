@@ -19,6 +19,7 @@ namespace Cashbox\Sber\Auth\Services;
 
 use Cashbox\Core\Concerns\Config\Application;
 use Cashbox\Core\Data\Config\Drivers\CredentialsData;
+use Cashbox\Core\Services\Identifier;
 use DragonCode\Support\Facades\Http\Url;
 use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Support\Facades\Http as Client;

@@ -18,12 +18,12 @@ declare(strict_types=1);
 namespace Cashbox\Sber\Auth;
 
 use Cashbox\Core\Data\Signing\Token;
-use Cashbox\Core\Services\Sign as BaseSign;
+use Cashbox\Core\Services\Auth as BaseAuth;
+use Cashbox\Core\Services\Identifier;
 use Cashbox\Sber\Auth\Services\Hash;
-use Cashbox\Sber\Auth\Services\Identifier;
 use Illuminate\Support\Arr;
 
-class Sign extends BaseSign
+class Auth extends BaseAuth
 {
     public function headers(): array
     {
